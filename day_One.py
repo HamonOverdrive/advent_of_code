@@ -1,4 +1,4 @@
-from itertools import cycle
+from itertools import cycle, islice
 
 num_list = []
 
@@ -16,13 +16,24 @@ puzzle_inputs = 3674367652242621474168763928218321697812856559411236481728359862
 # 	total += num_list[0]
 # print(total)
 
+
+# solution part 2
 num_list = [int(num) for num in str(puzzle_inputs)]
 
 total = 0
 list_length = len(num_list)
-half_check = list_length/2
-cycling_list = cycle(num_list)
+half_check = int(list_length/2)
 
-for i in cycling_list:
-	if i == cycling_list[half_check]
+# use islice to cut off excess list of cycle length and cycle num list
+cycle_length = 2 * list_length
+cycled_list = list(islice(cycle(num_list), cycle_length))
+
+for i in range(len(num_list)):
+	if cycled_list[i] == cycled_list[i+half_check]:
+		total += cycled_list[i]
+	if i == list_length:
+		break
+
 print(total)
+
+
